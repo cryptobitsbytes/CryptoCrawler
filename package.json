@@ -1,0 +1,17 @@
+{
+  "name": "cryptocrawler",
+  "version": "1.0.0",
+  "description": "crawling crypto tickers",
+  "main": "index.js",
+  "engines": {
+    "node": "8.7.0"
+  },
+  "author": "L.S. Eijsackers",
+  "license": "ISC",
+  "dependencies": {
+    "request": "2.83.0"
+  },
+  "scripts": {
+    "start": "node --inspect index.js"
+  }
+}
