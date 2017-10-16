@@ -1,0 +1,1 @@
+For ESLint, install the ESLint extension in Visual studio code
