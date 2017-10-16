@@ -9,7 +9,9 @@
   "author": "L.S. Eijsackers",
   "license": "ISC",
   "dependencies": {
-    "request": "2.83.0"
+    "bitfinex-api-node": "1.2.1",
+    "request": "2.83.0",
+    "ws": "3.2.0"
   },
   "scripts": {
     "start": "node --inspect index.js"
