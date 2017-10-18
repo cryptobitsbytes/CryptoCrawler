@@ -1,5 +1,7 @@
 #!/bin/bash
-echo "Building new image"
-docker build -t blokje5/cryptocrawler .
+echo "removing old containers"
+docker-compose down
+echo "Building new container"
+docker-compose build
 echo "Running new container, interactive mode"
-docker run -t blokje5/cryptocrawler
+docker-compose up -d

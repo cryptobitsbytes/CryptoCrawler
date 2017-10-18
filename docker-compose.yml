@@ -1,0 +1,17 @@
+version: "3"
+services:
+  web:
+    build: .
+    container_name: "CryptoCrawler.node"
+    links:
+    - mongodb
+    depends_on: 
+    - mongodb
+    ports:
+    - "9229:9229"
+  mongodb:
+    image: mongo:latest
+    ports:
+        - "27017:27017"
+    volumes:
+        - ./data/db:/data/db
