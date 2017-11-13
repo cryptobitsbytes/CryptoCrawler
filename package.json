@@ -12,11 +12,12 @@
     "bitfinex-api-node": "1.2.1",
     "mongodb": "2.2.33",
     "mongoose": "4.12.3",
-    "properties-reader": "0.0.16",
+    "nconf": "^0.8.5",
     "ws": "3.2.0"
   },
   "scripts": {
-    "start": "node --inspect index.js"
+    "start": "node --inspect index.js",
+    "prod": "export PROJECT_ID=\"$(gcloud config get-value project -q)\""
   },
   "devDependencies": {
     "eslint": "^4.9.0",

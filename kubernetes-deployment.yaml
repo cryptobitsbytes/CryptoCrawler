@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cryptocrawler-master
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: crypto
+        role: master
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: gcr.io/arctic-operand-181515/cryptocrawler:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi

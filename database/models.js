@@ -1,4 +1,4 @@
-const props = require('../properties/properties.js');
+const props = require('../config.js');
 const mongoose = require('mongoose');
 const ticker = require('./ticker.js');
 

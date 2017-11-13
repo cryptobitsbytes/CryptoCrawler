@@ -6,6 +6,7 @@ RUN npm install
 
 COPY . .
 
+ENV NODE_ENV=development
 ENV MONGODB_HOST=mongodb
 ENV MONGODB_PORT=27017
 

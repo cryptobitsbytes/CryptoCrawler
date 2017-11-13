@@ -6,5 +6,8 @@ module.exports = {
         "ecmaFeatures": {
             "jsx": true
         }
+    },
+    "rules":{
+        "linebreak-style": 0
     }
 };
