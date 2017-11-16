@@ -1,4 +1,4 @@
-const nconf = module.exports = require('nconf');
+const nconf = require('nconf');
 const path = require('path');
 
 nconf
@@ -35,4 +35,4 @@ function checkConfig(setting) {
   }
 }
 
-
+module.exports = nconf;
