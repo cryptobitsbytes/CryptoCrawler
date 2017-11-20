@@ -45,7 +45,7 @@ script:
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   gcloud docker -- push $FULL_IMAGE_NAME;
-  gcloud container clusters get-credentials $CLUSTER_NAME
+  gcloud container clusters get-credentials $CLUSTER_NAME;
   kubectl create -f kubernetes-deployment.yaml;
   fi
 
