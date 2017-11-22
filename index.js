@@ -8,5 +8,5 @@ ws.on('open', () => ws.subscribeTicker('BTCUSD'));
 
 ws.on('ticker', (pair, ticker) => {
     ticker.symbol = 'BTCUSD';
-    databaseSave("Tick" ,ticker);
+    databaseSave("Ticker" ,ticker);
 });
