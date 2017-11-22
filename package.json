@@ -11,8 +11,6 @@
   "dependencies": {
     "@google-cloud/datastore": "^1.1.0",
     "bitfinex-api-node": "1.2.1",
-    "mongodb": "2.2.33",
-    "mongoose": "4.12.3",
     "nconf": "^0.8.5",
     "ws": "3.2.0"
   },

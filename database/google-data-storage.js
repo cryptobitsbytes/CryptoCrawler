@@ -24,21 +24,20 @@ const datastore = Datastore({
 //  timestamp :
 // };
 
-// Add tick replace hardcoded values with nconf
-function addTick (tickData) {
-  const taskKey = datastore.key('Tick'); //hardcoded
-  const entity = {
-    key: taskKey,
-    data: tickData
-  };
+function saveData(entityKey, entityData) {
+    const taskKey = datastore.key(entityKey);
+    const entity = {
+        key: taskKey,
+        data: entityData
+    };
 
-  datastore.save(entity)
-    .then(() => {
-      console.log(`Task ${taskKey.id} created successfully.`);
-    })
-    .catch((err) => {
-      console.error('ERROR:', err);
-    });
+    datastore.save(entity)
+        .then(() => {
+            console.log(`${entityKey} - ${taskKey.id} created successfully.`);
+        })
+        .catch((err) => {
+            console.error('ERROR:', err);
+        });
 }
 
-module.exports=addTick;
+module.exports = saveData;
