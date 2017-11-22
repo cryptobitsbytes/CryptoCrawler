@@ -46,6 +46,6 @@ after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   gcloud docker -- push $FULL_IMAGE_NAME;
   gcloud container clusters get-credentials $CLUSTER_NAME;
-  kubectl create -f kubernetes-deployment.yaml;
+  kubectl set image deployment/cryptocrawler-master master=gcr.io/arctic-operand-181515/cryptocrawler:latest;
   fi
 
