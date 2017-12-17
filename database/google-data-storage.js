@@ -1,5 +1,5 @@
 // Imports the Google Cloud client library
-const Datastore = require('@google-cloud/datastore');
+const Datastore = require('@google-cloud/datastore')
 const props = require('../config');
 
 // Instantiate the datatstore
@@ -8,27 +8,30 @@ const datastore = Datastore({
   projectId: projectId,
 });
 
-
-// tick = {
-//  bid :  
-//  bidSize : 
-//  ask :
-//  askSize :
-//  dailyChange :
-//  dailyChangePerc :
-//  lastPrice :
-//  volume :
-//  high :
-//  low : 
-//  symbol :
-//  timestamp :
-// };
-
+/**
+ * Save an entity to the google data storage using the specified entity key.
+ * see https://googlecloudplatform.github.io/google-cloud-node/#/docs/datastore/1.1.0/datastore?method=save for documentation
+ * @param {*} entityKey - entity key
+ * @param {*} entityData - entity data
+ */
 function saveData(entityKey, entityData) {
     const taskKey = datastore.key(entityKey);
     const entity = {
         key: taskKey,
-        data: entityData
+        // Included: Symbol, Timestamp
+        excludeFromIndexes: [
+            'ask',
+            'askSize',
+            'bid',
+            'bidSize',
+            'dailyChange',
+            'dailyChangePerc',
+            'high',
+            'lastPrice',
+            'low',
+            'volume',
+        ],
+        data: entityData,
     };
 
     datastore.save(entity)
