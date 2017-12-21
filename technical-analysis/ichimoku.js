@@ -1,8 +1,8 @@
 // import Tracker from './utilities/track-high-low';
-import TechnicalIndicator from './base/technical-indicator';
-import ArrayHelpers from './utilities/array-helpers';
+const TechnicalIndicator = require('./base/technical-indicator');
+const ArrayHelpers = require('./utilities/array-helpers');
 
-export default class Ichimoku extends TechnicalIndicator {
+module.exports = class Ichimoku extends TechnicalIndicator {
     constructor(tracker, options) {
         super(tracker);
         if (options === undefined) {

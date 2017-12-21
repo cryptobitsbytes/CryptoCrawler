@@ -1,7 +1,4 @@
-/**
- * Tracker = 
- */
-export default class Tracker {
+module.exports = class Tracker {
     get tickerArray() {
         return this._tickerArray;
     }

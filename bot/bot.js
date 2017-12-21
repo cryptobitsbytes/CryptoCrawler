@@ -1,8 +1,8 @@
-import events from 'events';
-import SymbolManager from '../technical-analysis/utilities/symbol-manager';
-import Ichimoku from '../technical-analysis/ichimoku';
+const events = require('events');
+const SymbolManager = require('../technical-analysis/utilities/symbol-manager');
+const Ichimoku = require('../technical-analysis/ichimoku');
 
-export default class Bot extends events.EventEmitter {
+module.exports = class Bot extends events.EventEmitter {
     constructor() {
         super();
         this.hashMap = new Map();

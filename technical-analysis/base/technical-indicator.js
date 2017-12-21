@@ -1,5 +1,5 @@
 // essentially an abstract class for technical indicators
-export default class TechnicalIndicator {
+module.exports = class TechnicalIndicator {
     constructor(tracker) {
         this._tracker = tracker;
     }

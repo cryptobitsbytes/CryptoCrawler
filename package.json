@@ -12,6 +12,7 @@
     "@google-cloud/datastore": "^1.1.0",
     "bitfinex-api-node": "1.2.1",
     "nconf": "^0.8.5",
+    "path": "^0.12.7",
     "ws": "3.2.0"
   },
   "scripts": {
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "eslint": "^4.9.0",
-    "eslint-config-google": "^0.9.1"
+    "eslint-config-google": "^0.9.1",
+    "mocha": "^4.0.1"
   }
 }

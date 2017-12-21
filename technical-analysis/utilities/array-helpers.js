@@ -1,4 +1,4 @@
-export default class ArrayHelpers {
+module.exports = class ArrayHelpers {
     static high(array) {
         return array.reduce((prev, current) => {
             return (prev.lastPrice > current.lastPrice) ? prev : current;

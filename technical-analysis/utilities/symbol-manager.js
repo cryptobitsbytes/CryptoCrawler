@@ -1,7 +1,7 @@
-import events from 'events';
-import Tracker from './tracker';
+const events = require('events');
+const Tracker = require('./tracker');
 
-export default class SymbolManager extends events.EventEmitter {
+module.exports = class SymbolManager extends events.EventEmitter {
     get symbol() {
         return this._symbol;
     }
