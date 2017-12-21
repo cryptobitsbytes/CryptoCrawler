@@ -1,27 +1,33 @@
-import Tracker from './utilities/track-high-low';
+// import Tracker from './utilities/track-high-low';
+import TechnicalIndicator from './base/technical-indicator';
+import ArrayHelpers from './utilities/array-helpers';
 
-export default class Ichimoku {
-    constructor(array, options) {
-        this.array = array;
-        if (options !== undefined) {
-            // initialize with default values
-            this.tenkanTracker = new Tracker(array, 9);
-            this.kijunTracker = new Tracker(array, 26);
-            this.senkouSpanBTracker = new Tracker(array, 52);
+export default class Ichimoku extends TechnicalIndicator {
+    constructor(tracker, options) {
+        super(tracker);
+        if (options === undefined) {
+            this._options = {
+                tenkanPeriod: 9,
+                kijunPeriod: 26,
+                senkouPeriod: 52,
+            };
         } else {
-            // use options object to construct custom periods
-            this.tenkanTracker = new Tracker(array, options.tenkanPeriod);
-            this.kijunTracker = new Tracker(array, options.kijunPeriod);
-            this.senkouSpanBTracker = new Tracker(array, options.senkouPeriod);
+          this._options = options;
         }
     }
 
     tenkan() {
-        return (this.tenkanTracker.sumHighLow()) / 2;
+        const period = this.options.tenkanPeriod;
+        const periodData = this._tracker.returnPeriodData(period);
+        const sumHighLow = ArrayHelpers.sumHighLow(periodData);
+        return (sumHighLow) / 2;
     }
 
     kijun() {
-        return (this.kijunTracker.sumHighLow()) / 2;
+        const period = this.options.kijunPeriod;
+        const periodData = this._tracker.returnPeriodData(period);
+        const sumHighLow = ArrayHelpers.sumHighLow(periodData);
+        return (sumHighLow) / 2;
     }
 
     senkouSpanA() {
@@ -29,7 +35,10 @@ export default class Ichimoku {
     }
 
     senkouSpanB() {
-        return (this.senkouSpanBTracker.sumHighLow()) / 2;
+        const period = this.options.senkouPeriod;
+        const periodData = this._tracker.returnPeriodData(period);
+        const sumHighLow = ArrayHelpers.sumHighLow(periodData);
+        return (sumHighLow) / 2;
     }
 
     upward() {
@@ -37,10 +46,13 @@ export default class Ichimoku {
     }
 
     downward() {
-        return this.senkouSpanB > this.senkouSpanA();
+        return this.senkouSpanB() > this.senkouSpanA();
     }
 
-    valueThroughCloud(x) {
+    trigger() {
+        // check if caching of certain values is possible, this calculates twice
+        // not really efficient
+        const x = this._tracker.latest();
         if (this.upward()) {
             return this.senkouSpanB <= x;
         } else {
