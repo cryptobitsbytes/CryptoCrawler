@@ -9,6 +9,10 @@ module.exports = {
     },
     "rules":{
         "require-jsdoc": 0,
+        "max-len": ["error", {
+            "code": 80,
+            "ignoreStrings": true,
+        }],
         "linebreak-style": 0
     }
 };

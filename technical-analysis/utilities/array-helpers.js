@@ -22,7 +22,8 @@ module.exports = class ArrayHelpers {
     }
 
     /** 
-     * high returns the sum of the lowest and highest lastPrice of a ticker array
+     * sumHighLow returns the sum of the lowest and highest 
+     * lastPrice of a ticker array
      * @param {Array} array - Array[Ticker]
      * @return {float} - lowest last price in array
      */

@@ -1,7 +1,5 @@
-console.log('array started');
 const findFilePath = global.helpers.findFilePath;
 const expect = global.helpers.expect;
-console.log(findFilePath(__filename));
 const ArrayHelpers = require(findFilePath(__filename));
 
 describe('the ArrayHelpers class', () => {
@@ -25,7 +23,6 @@ describe('the ArrayHelpers class', () => {
 
     it('should correctly calculate the high point of a ticker array', () => {
         const result = ArrayHelpers.high(testArray);
-        console.log(result);
         expect(result).to.equal(high);
     });
 
