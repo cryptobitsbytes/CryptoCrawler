@@ -12,6 +12,7 @@ module.exports = class SymbolManager extends events.EventEmitter {
         this._tracker = new Tracker();
         this._taBuyArray = taBuyArray;
         this._taSellArray = taSellArray;
+        this.setTrackerTA();
     }
 
     onTicker(ticker) {
@@ -19,7 +20,6 @@ module.exports = class SymbolManager extends events.EventEmitter {
         // If O(n) should maybe consider something else
         // since event can be emitted before new ticker data
         this._tracker.insert(ticker);
-        this.recalculateTA();
         const buyTriggerBool = this.buyTrigger();
         if (buyTriggerBool) {
             this.emit('buy-trigger');
@@ -30,10 +30,15 @@ module.exports = class SymbolManager extends events.EventEmitter {
         }
     }
 
-    recalculateTA() {
-        this._taArray.forEach((indicator) => {
-            indicator.recalculate(this._tracker);
+    setTrackerArray(array) {
+        array.forEach((indicator) => {
+            indicator.setTracker(this._tracker);
         });
+    }
+    
+    setTrackerTA() {
+        this.setTrackerArray(this._taBuyArray);
+        this.setTrackerArray(this._taSellArray);
     }
 
     buyTrigger() {
@@ -47,4 +52,4 @@ module.exports = class SymbolManager extends events.EventEmitter {
         // check if every indicator returns true
         return array.every((indicator) => indicator.trigger());
     }
-}
+};

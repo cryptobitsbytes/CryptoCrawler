@@ -4,11 +4,11 @@ module.exports = class TechnicalIndicator {
         this._tracker = tracker;
     }
 
-    recalculate(tracker) {
+    setTracker(tracker) {
         this._tracker = tracker;
     }
 
     trigger() {
         throw new Error('method not implemented in TA indicator');
     }
-}
+};

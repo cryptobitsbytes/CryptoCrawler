@@ -58,7 +58,9 @@ describe('the Tracker class', () => {
     it('should correctly return the array filtered by a period', () => {
         const tracker = new Tracker();
         const testDate = constructTestDate();
-        testDate.tickerArray.reverse().forEach((ticker) => tracker.insert(ticker));
+        testDate.tickerArray.reverse().forEach((ticker) => {
+            tracker.insert(ticker);
+        });
         const filteredArray = tracker.returnPeriodData(testDate.period);
         expect(filteredArray.length).to.equal(3);
         const isAllAbovePeriod = filteredArray.every((ticker) => {
