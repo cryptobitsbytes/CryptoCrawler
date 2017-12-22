@@ -17,14 +17,15 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "mocha ./test/test-setup.js \"./test/**/*.test.js\"",
-    "test-watch": "mocha ./test/test-setup.js \"./test/**/*.test.js\" --watch"
+    "test": "nyc --reporter=html --reporter=text mocha ./test/test-setup.js \"./test/**/*.test.js\"",
+    "test-watch": "nyc mocha ./test/test-setup.js \"./test/**/*.test.js\" --watch"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.9.0",
     "eslint-config-google": "^0.9.1",
     "mocha": "^4.0.1",
+    "nyc": "^11.4.1",
     "sinon": "^4.1.3"
   }
 }
