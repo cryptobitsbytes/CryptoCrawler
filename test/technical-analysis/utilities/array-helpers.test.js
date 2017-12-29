@@ -6,7 +6,7 @@ describe('the ArrayHelpers class', () => {
     // only lastPrice is used by array helpers
     const high = 10.1;
     const low = 9.9;
-    const testArray = [
+    const testArrayHappyFlow = [
         {
             lastPrice: 10.0,
         },
@@ -21,18 +21,54 @@ describe('the ArrayHelpers class', () => {
         },
     ];
 
+    const testArrayDouble = [
+        {
+            lastPrice: high,
+        },
+        {
+            lastPrice: high,
+        },
+        {
+            lastPrice: 10.0,
+        },
+        {
+            lastPrice: low,
+        },
+        {
+            lastPrice: low,
+        },
+    ];
+
     it('should correctly calculate the high point of a ticker array', () => {
-        const result = ArrayHelpers.high(testArray);
+        const result = ArrayHelpers.high(testArrayHappyFlow);
         expect(result).to.equal(high);
     });
 
     it('should correctly calculate the low point of a ticker array', () => {
-        const result = ArrayHelpers.low(testArray);
+        const result = ArrayHelpers.low(testArrayHappyFlow);
         expect(result).to.equal(low);
     });
 
     it('should correctly calculate the sum of the high point and low point of a ticker array', () => {
-        const result = ArrayHelpers.sumHighLow(testArray);
+        const result = ArrayHelpers.sumHighLow(testArrayHappyFlow);
         expect(result).to.equal(high + low);
     });
+
+    it('should correctly calculate both points of a ticker array when there are doubles', () => {
+        const resulthigh = ArrayHelpers.high(testArrayDouble);
+        const resultlow = ArrayHelpers.low(testArrayDouble);
+        expect(resulthigh).to.equal(high);
+        expect(resultlow).to.equal(low);
+    });
+
+    /* FIXME: Misschien wat testen toevoegen voor errorhandling bijv:
+
+    const testArrayEmpty = [];
+
+    it('should throw an exception when the array is empty', () => {
+        expect(function() {
+            ArrayHelpers.sumHighLow(testArrayEmpty);
+        }).to.throw(SomeException);
+    });
+    */
 });

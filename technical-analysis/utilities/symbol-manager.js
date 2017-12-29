@@ -16,7 +16,7 @@ module.exports = class SymbolManager extends events.EventEmitter {
     }
 
     onTicker(ticker) {
-        // check running time of push. 
+        // check running time of push.
         // If O(n) should maybe consider something else
         // since event can be emitted before new ticker data
         this._tracker.insert(ticker);
@@ -35,7 +35,7 @@ module.exports = class SymbolManager extends events.EventEmitter {
             indicator.setTracker(this._tracker);
         });
     }
-    
+
     setTrackerTA() {
         this.setTrackerArray(this._taBuyArray);
         this.setTrackerArray(this._taSellArray);

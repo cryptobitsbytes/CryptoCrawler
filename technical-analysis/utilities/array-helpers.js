@@ -1,5 +1,5 @@
 module.exports = class ArrayHelpers {
-    /** 
+    /**
      * high returns the highest lastPrice of a ticker array
      * @param {Array} array - Array[Ticker]
      * @return {float} - highest last price in array
@@ -10,7 +10,7 @@ module.exports = class ArrayHelpers {
         }).lastPrice;
     }
 
-    /** 
+    /**
      * high returns the lowest lastPrice of a ticker array
      * @param {Array} array - Array[Ticker]
      * @return {float} - lowest last price in array
@@ -21,8 +21,8 @@ module.exports = class ArrayHelpers {
         }).lastPrice;
     }
 
-    /** 
-     * sumHighLow returns the sum of the lowest and highest 
+    /**
+     * sumHighLow returns the sum of the lowest and highest
      * lastPrice of a ticker array
      * @param {Array} array - Array[Ticker]
      * @return {float} - lowest last price in array
