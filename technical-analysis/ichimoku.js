@@ -59,4 +59,4 @@ module.exports = class Ichimoku extends TechnicalIndicator {
             return this.senkouSpanA <= x;
         }
     }
-}
+};
