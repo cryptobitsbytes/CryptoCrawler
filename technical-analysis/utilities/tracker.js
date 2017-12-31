@@ -3,8 +3,18 @@ module.exports = class Tracker {
         return this._tickerArray;
     }
 
+    // TODO get historical data from exchanges
+    get historicalDataArray() {
+        return this._historicalDataArray;
+    }
+
+    set historicalDataArray(historicalDataArray) {
+       this._historicalDataArray = historicalDataArray;
+    }
+
     constructor() {
         this._tickerArray = [];
+        this._historicalDataArray = [];
     }
 
     // TODO use to clean up the array after certain period
@@ -21,11 +31,11 @@ module.exports = class Tracker {
         ago.setDate(ago.getDate() - period);
         ago.setHours(0, 0, 0, 0);
 
-        const index = this._tickerArray.findIndex((ticker) => {
-            return ticker.Timestamp >= ago;
+        const index = this._historicalDataArray.findIndex((ticker) => {
+            return ticker.date >= ago;
         });
 
-        return this._tickerArray.slice(index);
+        return this._historicalDataArray.slice(index);
     }
 
     latest() {

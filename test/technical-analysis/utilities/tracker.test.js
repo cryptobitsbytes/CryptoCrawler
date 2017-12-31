@@ -27,11 +27,26 @@ const constructTestDate = () => {
             Timestamp: toOld,
         },
     ];
+    const historicalDataArray = [
+        {
+            date: toOld,
+        },
+        {
+            date: periodDaysAgo,
+        },
+        {
+            date: now,
+        },
+        {
+            date: now,
+        },
+    ];
     return {
         now,
         period,
         periodDaysAgo,
         tickerArray,
+        historicalDataArray,
     };
 };
 
@@ -55,16 +70,14 @@ describe('the Tracker class', () => {
         expect(tracker.latest()).to.equal(testPointTwo);
     });
 
-    it('should correctly return the array filtered by a period', () => {
+    it('should correctly return the historical data array filtered by a period', () => {
         const tracker = new Tracker();
         const testDate = constructTestDate();
-        testDate.tickerArray.reverse().forEach((ticker) => {
-            tracker.insert(ticker);
-        });
+        tracker.historicalDataArray = testDate.historicalDataArray;
         const filteredArray = tracker.returnPeriodData(testDate.period);
         expect(filteredArray.length).to.equal(3);
-        const isAllAbovePeriod = filteredArray.every((ticker) => {
-            return ticker.Timestamp >= testDate.periodDaysAgo;
+        const isAllAbovePeriod = filteredArray.every((data) => {
+            return data.date >= testDate.periodDaysAgo;
         });
         expect(isAllAbovePeriod).to.equal(true);
     });

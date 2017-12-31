@@ -1,23 +1,25 @@
 module.exports = class ArrayHelpers {
     /**
      * high returns the highest lastPrice of a ticker array
-     * @param {Array} array - Array[Ticker]
+     * @param {Array} array - Array[Object]
+     * @param {property} property - Property of the object to filter on
      * @return {float} - highest last price in array
      */
-    static high(array) {
+    static high(array, property) {
         return array.reduce((prev, current) => {
-            return (prev.lastPrice > current.lastPrice) ? prev : current;
+            return (prev[property] > current[property]) ? prev : current;
         }).lastPrice;
     }
 
     /**
      * high returns the lowest lastPrice of a ticker array
-     * @param {Array} array - Array[Ticker]
+     * @param {Array} array - Array[Object]
+     * @param {property} property - Property of the object to filter on
      * @return {float} - lowest last price in array
      */
-    static low(array) {
+    static low(array, property) {
         return array.reduce((prev, current) => {
-            return (prev.lastPrice < current.lastPrice) ? prev : current;
+            return (prev[property] < current[property]) ? prev : current;
         }).lastPrice;
     }
 
@@ -25,9 +27,10 @@ module.exports = class ArrayHelpers {
      * sumHighLow returns the sum of the lowest and highest
      * lastPrice of a ticker array
      * @param {Array} array - Array[Ticker]
+     * @param {property} property - Property of the object to filter on
      * @return {float} - lowest last price in array
      */
-    static sumHighLow(array) {
-        return this.high(array) + this.low(array);
+    static sumHighLow(array, property) {
+        return this.high(array, property) + this.low(array, property);
     }
 };
