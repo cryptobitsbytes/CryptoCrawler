@@ -50,7 +50,7 @@ describe('the ArrayHelpers class', () => {
     });
 
     it('should correctly calculate the sum of the high point and low point of a ticker array', () => {
-        const result = ArrayHelpers.sumHighLow(testArrayHappyFlow, 'lastPrice');
+        const result = ArrayHelpers.sumHighLow(testArrayHappyFlow, 'lastPrice', 'lastPrice');
         expect(result).to.equal(high + low);
     });
 

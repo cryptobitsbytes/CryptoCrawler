@@ -30,6 +30,11 @@ module.exports = class SymbolManager extends events.EventEmitter {
         }
     }
 
+    // TODO get historical data from exchanges
+    setHistoricalData(array) {
+        this._tracker.historicalDataArray = array;
+    }
+
     setTrackerArray(array) {
         array.forEach((indicator) => {
             indicator.setTracker(this._tracker);

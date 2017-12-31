@@ -19,14 +19,14 @@ module.exports = class Ichimoku extends TechnicalIndicator {
     tenkan() {
         const period = this.options.tenkanPeriod;
         const periodData = this._tracker.returnPeriodData(period);
-        const sumHighLow = ArrayHelpers.sumHighLow(periodData);
+        const sumHighLow = ArrayHelpers.sumHighLow(periodData, 'high', 'low');
         return (sumHighLow) / 2;
     }
 
     kijun() {
         const period = this.options.kijunPeriod;
         const periodData = this._tracker.returnPeriodData(period);
-        const sumHighLow = ArrayHelpers.sumHighLow(periodData);
+        const sumHighLow = ArrayHelpers.sumHighLow(periodData, 'high', 'low');
         return (sumHighLow) / 2;
     }
 
@@ -37,7 +37,7 @@ module.exports = class Ichimoku extends TechnicalIndicator {
     senkouSpanB() {
         const period = this.options.senkouPeriod;
         const periodData = this._tracker.returnPeriodData(period);
-        const sumHighLow = ArrayHelpers.sumHighLow(periodData);
+        const sumHighLow = ArrayHelpers.sumHighLow(periodData, 'high', 'low');
         return (sumHighLow) / 2;
     }
 

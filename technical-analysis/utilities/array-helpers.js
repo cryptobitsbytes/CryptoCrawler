@@ -27,10 +27,11 @@ module.exports = class ArrayHelpers {
      * sumHighLow returns the sum of the lowest and highest
      * lastPrice of a ticker array
      * @param {Array} array - Array[Ticker]
-     * @param {property} property - Property of the object to filter on
+     * @param {property} highProperty - Property of the object to filter on
+     * @param {property} lowProperty - Property of the object to filter on 
      * @return {float} - lowest last price in array
      */
-    static sumHighLow(array, property) {
-        return this.high(array, property) + this.low(array, property);
+    static sumHighLow(array, highProperty, lowProperty) {
+        return this.high(array, highProperty) + this.low(array, lowProperty);
     }
 };
